@@ -1,0 +1,115 @@
+/* Custom CSS for the Barcode Generator App */
+
+/* Body styling */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Container styling */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Heading styling */
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: white;
+    background-color: hwb(211 2% 53%) ;
+    border-radius: 10px;
+    
+}
+
+h3 {
+    margin-top: 40px;
+    font-weight: bold;
+}
+
+/* Form styling */
+.form-group label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    margin-top: 10px;
+    display: block;
+}
+
+.form-check {
+    margin-bottom: 10px;
+    
+}
+
+
+.form-check-input {
+    margin-right: 10px;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    margin-bottom: 15px;
+}
+
+.btn-primary:hover {
+    background-color: hwb(211 2% 53%);
+}
+.btn-danger {
+    margin-bottom: 10px;
+}
+
+.btn-success {
+    margin-bottom: 10px;
+}
+.btn-danger:hover {
+    background-color: hwb(0 0% 58%);
+}
+
+.btn-success:hover {
+    background-color: hwb(135 0% 59%);
+}
+/* Barcode display styling */
+
+#result{
+    text-align: center;
+    margin-bottom: 30px;
+    font-weight: bold;
+    color: black;
+   
+    border-radius: 10px;
+}
+#qrcode {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 600px) {
+    .container {
+        margin: 20px auto;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
+    }
+
+    .btn-primary {
+        padding: 8px;
+    }
+}
