@@ -22,10 +22,8 @@
         const qrScanner = new QrScanner(
           cameraVideo,
           (result) => {
-            
             console.log(result);
             qrResult.textContent = `result: ${result.data}`;
-           
             return;
           },
           { returnDetailedScanResult: true }
@@ -38,10 +36,31 @@
           qrScanner.start();
         });
 
-        stop.addEventListener('click', (event) =>   {
-            qrScanner.stop();
-        })
+        stop.addEventListener('click', (event) => {
+        
+  
+          qrScanner.stop();
+        });
       </script>
+      <style>
+        * {
+          box-sizing: border-box;
+          margin: 0;
+        }
+  
+        html,
+        body {
+          width: 100vw;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        }
+  
+        video {
+          width: 100vw;
+          height: calc(100vw * (9 / 16));
+        }
+      </style>
       <style>
         * {
           box-sizing: border-box;
@@ -181,11 +200,11 @@
          });
 
          // Combine the name and hobbies into a single string
-        //  var inputString = name + ": " + origin + ": "+ hobbies.join(", ");
-         var inputString = {
-            "name" :[name], 
-            "origin": [origin],
-            "hobbies" :  [hobbies.join(", ")]};
+         var inputString = name + ": " + origin + ": "+ hobbies.join(", ");
+        //  var inputString = {
+        //     "name" :[name], 
+        //     "origin": [origin],
+        //     "hobbies" :  [hobbies.join(", ")]};
          // Generate the barcode
          var qrcodeContainer = document.getElementById("qrcode");
             qrcodeContainer.innerHTML = "";  // Clear previous QR code
