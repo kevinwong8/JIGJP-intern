@@ -81,16 +81,10 @@ h3 {
 
 .btn-success:hover {
     background-color: hwb(135 0% 59%);
-}
+}      
 /* Barcode display styling */
 
-#resultWord{
-    text-align: center;
-    margin-top: 30px;
-    font-weight: bold;
-    color: black;
-   
-}
+
 #qrcode {
     display: flex;
     justify-content: center;
