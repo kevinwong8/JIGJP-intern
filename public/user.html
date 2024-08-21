@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for the profile page */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .profile-container {
+            max-width: 600px;
+            background-color: #ffffff;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .profile-container h2 {
+            margin-bottom: 20px;
+            font-weight: bold;
+            color: #007bff;
+        }
+
+        .profile-container p {
+            font-size: 1.1em;
+            margin: 10px 0;
+        }
+
+        .hobbies-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .hobbies-list li {
+            background-color: #e9ecef;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="profile-container">
+        <h2 id="user-name">User Profile</h2>
+        <p><strong>Name:</strong> <span id="name">Loading...</span></p>
+        <p><strong>Origin:</strong> <span id="origin">Loading...</span></p>
+        <p><strong>Hobbies:</strong></p>
+        <ul id="hobbies-list" class="hobbies-list">
+            <li>Loading...</li>
+        </ul>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <!-- JavaScript to Fetch and Display Data -->
+    <script>
+        // Example of fetching user data from a server
+        function fetchUserData() {
+            // Simulated server response
+            const userData = {
+                name: "Jane Doe",
+                origin: "Bandung, Indonesia",
+                hobbies: ["Photography", "Traveling", "Cooking"]
+            };
+
+            // Update the DOM with the fetched data
+            document.getElementById("user-name").textContent = userData.name + "'s Profile";
+            document.getElementById("name").textContent = userData.name;
+            document.getElementById("origin").textContent = userData.origin;
+
+            // Clear previous hobbies and populate with new data
+            const hobbiesList = document.getElementById("hobbies-list");
+            hobbiesList.innerHTML = ""; // Clear existing content
+            userData.hobbies.forEach(function(hobby) {
+                const li = document.createElement("li");
+                li.textContent = hobby;
+                hobbiesList.appendChild(li);
+            });
+        }
+
+        // Fetch and display the user data when the page loads
+        document.addEventListener("DOMContentLoaded", fetchUserData);
+    </script>
+</body>
+</html>
+

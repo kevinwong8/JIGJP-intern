@@ -203,17 +203,17 @@
          });
 
          // Combine the name and hobbies into a single string
-         var inputString = name + ": " + origin + ": "+ hobbies.join(", ");
-        //  var inputString = {
-        //     "name" :[name], 
-        //     "origin": [origin],
-        //     "hobbies" :  [hobbies.join(", ")]};
+        //  var inputString = name + ": " + origin + ": "+ hobbies.join(", ");
+         var inputString = {
+            "name" :[name], 
+            "origin": [origin],
+            "hobbies" :  [hobbies.join(", ")]};
          // Generate the barcode
          var qrcodeContainer = document.getElementById("qrcode");
             qrcodeContainer.innerHTML = "";  // Clear previous QR code
             var qrcode = new QRCode(qrcodeContainer, {
-                // text: JSON.stringify(inputString),
-                text: inputString,
+                text: JSON.stringify(inputString),
+                // text: inputString,
                 width: 256,
                 height: 256,
                 colorDark: "#000000",
