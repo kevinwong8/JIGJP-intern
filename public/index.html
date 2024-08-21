@@ -23,7 +23,7 @@
           cameraVideo,
           (result) => {
             console.log(result);
-            qrResult.textContent = `result: ${result.data}`;
+            qrResult.textContent = `Result: ${result.data}`;
             return;
           },
           { returnDetailedScanResult: true }
@@ -48,7 +48,7 @@
           margin: 0;
         }
   
-        html,
+        html
         body {
           width: 100vw;
           display: flex;
@@ -78,6 +78,7 @@
         video {
           width: 100vw;
           height: calc(100vw * (9 / 16));
+          display: flex;
         }
       </style>
 </head>
@@ -130,33 +131,33 @@
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Badminton" id="badminton">
-                <label class="form-check-label" for="badminton">
+                <input class="form-check-input" type="checkbox" value="Sports" id="Sports">
+                <label class="form-check-label" for="Sports">
                     スポーツ
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Cycling" id="cycling">
-                <label class="form-check-label" for="cycling">
+                <input class="form-check-input" type="checkbox" value="Painting" id="Painting">
+                <label class="form-check-label" for="Painting">
                     絵画
                 </label>
             </div>
 
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Reading" id="reading">
-                <label class="form-check-label" for="reading">
+                <input class="form-check-input" type="checkbox" value="Game" id="Reading">
+                <label class="form-check-label" for="Reading">
                     ゲーム
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Traveling" id="traveling">
-                <label class="form-check-label" for="traveling">
+                <input class="form-check-input" type="checkbox" value="Music" id="Music">
+                <label class="form-check-label" for="Music">
                     音楽
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="Cooking" id="cooking">
-                <label class="form-check-label" for="cooking">
+                <input class="form-check-input" type="checkbox" value="Movie" id="Movie">
+                <label class="form-check-label" for="Movie">
                     映画
                 </label>
             </div>
@@ -170,16 +171,18 @@
     </div>
 
     
+    <div class="container mt-5">
+      <h1>QR Code Reader</h1>
+      <button type="submit" class="btn btn-success" id="scan">Scan QR</button>
+      <button type="submit" class="btn btn-danger" id="stop">Stop</button>
+      <video id="camera"></video>
+      <h3>Scan your code here</h3>
+      
+      <span id="result"></span>
+      
+  </div>
+    </div>
     
-    </div>
-    <div class="container">
-        <h2>QR Code Reader</h2>
-        <button type="submit" class="btn btn-success" id="scan">Scan QR</button>
-        <button type="submit" class="btn btn-danger" id="stop">Stop</button>
-        <video id="camera"></video>
-        <span id="result"></span>
-        <div id="result">Scan a QR code to see the result here...</div>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
 
@@ -209,7 +212,8 @@
          var qrcodeContainer = document.getElementById("qrcode");
             qrcodeContainer.innerHTML = "";  // Clear previous QR code
             var qrcode = new QRCode(qrcodeContainer, {
-                text: JSON.stringify(inputString),
+                // text: JSON.stringify(inputString),
+                text: inputString,
                 width: 256,
                 height: 256,
                 colorDark: "#000000",

@@ -33,6 +33,7 @@ h1 {
 h3 {
     margin-top: 40px;
     font-weight: bold;
+    text-align: center;
 }
 
 /* Form styling */
@@ -83,13 +84,12 @@ h3 {
 }
 /* Barcode display styling */
 
-#result{
+#resultWord{
     text-align: center;
-    margin-bottom: 30px;
+    margin-top: 30px;
     font-weight: bold;
     color: black;
    
-    border-radius: 10px;
 }
 #qrcode {
     display: flex;
