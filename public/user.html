@@ -13,54 +13,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css" />
-    <style>
-        /* Custom styles for the profile page */
-        /* body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        } */
-
-        .profile-container {
-            max-width: 600px;
-            background-color: #ffffff;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-            border-radius: 10px;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .profile-container h2 {
-            margin-bottom: 20px;
-            font-weight: bold;
-            color: #007bff;
-        }
-
-        .profile-container p {
-            font-size: 1.1em;
-            margin: 10px 0;
-        }
-
-        .hobbies-list {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        .hobbies-list li {
-            background-color: #e9ecef;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-       
-    </style>
+   
     <script type="module" defer>
         import QrScanner from 'https://nimiq.github.io/qr-scanner/qr-scanner.min.js';
   
@@ -68,13 +21,17 @@
         const stop = document.getElementById('stop');
         const cameraVideo = document.getElementById('camera');
         const qrResult = document.getElementById('result');
+        let meme = document.getElementById('meme');
   
         const qrScanner = new QrScanner(
           cameraVideo,
           (result) => {
             console.log(result);
-            // const resultJson = JSON.parse(result);
-            qrResult.textContent = `Scan successful ${result.data}`;
+            
+            // qrResult.textContent = `Scan successful ${result.data}`;
+            qrResult.textContent = `Scan successful`;
+            meme.style.display = 'block';
+    
             const userData = JSON.parse(result.data)
             document.getElementById("user-name").textContent = userData.name + "'s Profile";
             document.getElementById("name").textContent = userData.name;
@@ -87,7 +44,7 @@
                 li.textContent = hobby;
                 hobbiesList.appendChild(li);
             });
-            // qrResult.textContent = `Result: ` ;
+            
             return;
           },
           { returnDetailedScanResult: true }
@@ -101,62 +58,45 @@
         });
 
         stop.addEventListener('click', (event) => {
-        
-  
+          qrResult.textContent = '';
+          meme.style.display = 'none';
+    
           qrScanner.stop();
         });
       </script>
-      <style>
-        * {
-          box-sizing: border-box;
-          margin: 0;
-        }
-  
-        /* html
-        body {
-          width: 100vw;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        } */
-  
-        
-         
-      </style>
+      
       
 </head>
 <body>
     <div class="container mt-5">
        
-            <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"> QR Code Reader</h1>
-            <a href="index.html">Generate QRCode Here!</a>
-            <br>
-            <button type="submit" class="btn btn-success" id="scan">Scan QR</button>
-            <br>
+            <h1> QR Code Reader</h1>
+            <a href="index.html">Generate QRCode Here!</a><br>
+            <button type="submit" class="btn btn-success" id="scan">Scan QR</button><br>
             <button type="submit" class="btn btn-danger" id="stop">Stop</button>
             <div class="embed-responsive embed-responsive-16by9">
               <video class="embed-responsive-item" id="camera"></video>
             </div>
             
-            <h3>Scan your code here</h3>
-            <span id="result"></span>
+            <!-- scan QR part -->
+          <h3>Scan your code here</h3>
+          <span  id="result"></span>
+          <img style="display:none" src="happy-cat.gif" alt="Happy Cat" id="meme" style="width:100px;height: 100px;">
             
-   
-       
-        <dialog>
-            <button autofocus type="submit" class="btn btn-danger">Close</button>
-            <div class="profile-container">
-                <h2 id="user-name">User Profile</h2>
-                <p><strong>Name:</strong> <span id="name">Loading...</span></p>
-                <p><strong>Origin:</strong> <span id="origin">Loading...</span></p>
-                <p><strong>Hobbies:</strong></p>
-                <ul id="hobbies-list" class="hobbies-list">
-                    <li>Loading...</li>
-                </ul>
-            </div>
-          </dialog>
+          <dialog>
+              <button autofocus type="submit" class="btn btn-danger">Close</button>
+              <div class="profile-container">
+                  <h2 id="user-name">User Profile</h2>
+                  <p><strong>Name:</strong> <span id="name">Please scan the QR code</span></p>
+                  <p><strong>Origin:</strong> <span id="origin">Please scan the QR code</span></p>
+                  <p><strong>Hobbies:</strong></p>
+                  <ul id="hobbies-list" class="hobbies-list">
+                      <li>Please scan the QR code</li>
+                  </ul>
+              </div>
+            </dialog>
           <button type="submit" class="btn btn-primary">Show Friend's Bio</button>
-
+        
         <script>
             const dialog = document.querySelector("dialog");
             const showButton = document.querySelector("dialog + button");
@@ -175,7 +115,5 @@
         </script>
     
     </div>   
-
-    
-</body>
+  </body>
 </html>
