@@ -70,24 +70,20 @@
           cameraVideo,
           (result) => {
             console.log(result);
-            const userData = JSON.parse(result)
-            qrResult.textContent = `Scan succeed ${result.data}`;
-            
-
-            // Update the DOM with the fetched data
+            // const resultJson = JSON.parse(result);
+            qrResult.textContent = `Scan successful ${result.data}`;
+            const userData = JSON.parse(result.data)
             document.getElementById("user-name").textContent = userData.name + "'s Profile";
             document.getElementById("name").textContent = userData.name;
             document.getElementById("origin").textContent = userData.origin;
 
-            // Clear previous hobbies and populate with new data
             const hobbiesList = document.getElementById("hobbies-list");
             hobbiesList.innerHTML = ""; // Clear existing content
             userData.hobbies.forEach(function(hobby) {
                 const li = document.createElement("li");
                 li.textContent = hobby;
                 hobbiesList.appendChild(li);
-              });
-          
+            });
             // qrResult.textContent = `Result: ` ;
             return;
           },
@@ -184,22 +180,34 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
     <!-- JavaScript to Fetch and Display Data -->
-    <script>
+    <!-- <script>
        
         // Example of fetching user data from a server
         function fetchUserData() {
             // Simulated server response
             const userData = {
-                name: "Jane Doe",
+                // name: "Jane Doe",
                 origin: "Bandung, Indonesia",
                 hobbies: ["Photography", "Traveling", "Cooking"]
             };
-          }
-            
+
+            // Update the DOM with the fetched data
+            // document.getElementById("user-name").textContent = userData.name + "'s Profile";
+            // document.getElementById("name").textContent = userData.name;
+            // document.getElementById("origin").textContent = userData.origin;
+
+            // Clear previous hobbies and populate with new data
+        //     const hobbiesList = document.getElementById("hobbies-list");
+        //     hobbiesList.innerHTML = ""; // Clear existing content
+        //     userData.hobbies.forEach(function(hobby) {
+        //         const li = document.createElement("li");
+        //         li.textContent = hobby;
+        //         hobbiesList.appendChild(li);
+        //     });
+        // }
 
         // Fetch and display the user data when the page loads
         document.addEventListener("DOMContentLoaded", fetchUserData);
-    </script>
+    </script> -->
 </body>
 </html>
-
