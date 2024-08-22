@@ -9,6 +9,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <link rel="stylesheet" href="style.css" />
     <style>
         /* Custom styles for the profile page */
@@ -109,28 +112,27 @@
           margin: 0;
         }
   
-        html
+        /* html
         body {
           width: 100vw;
           display: flex;
           flex-direction: column;
           align-items: center;
-        }
+        } */
   
         
-         video {
-          width: 100%;
-          height:auto;
-        }
+         
       </style>
       
 </head>
 <body>
-    <div class="container">
+    <div class="container mt-5">
        
-            <h1> QR Code Reader</h1>
-            
+            <h1 class="mb-4 text-3xl font-extrabold text-gray-900 dark:text-white md:text-5xl lg:text-6xl"> QR Code Reader</h1>
+            <a href="index.html">Generate QRCode Here!</a>
+            <br>
             <button type="submit" class="btn btn-success" id="scan">Scan QR</button>
+            <br>
             <button type="submit" class="btn btn-danger" id="stop">Stop</button>
             <div class="embed-responsive embed-responsive-16by9">
               <video class="embed-responsive-item" id="camera"></video>
@@ -138,7 +140,7 @@
             
             <h3>Scan your code here</h3>
             <span id="result"></span>
-            <a href="index.html">Generate QRCode Here!</a>
+            
    
        
         <dialog>
@@ -172,42 +174,8 @@
 
         </script>
     
-    </div>
-   
-    <!-- Bootstrap JS and dependencies -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    </div>   
 
-    <!-- JavaScript to Fetch and Display Data -->
-    <!-- <script>
-       
-        // Example of fetching user data from a server
-        function fetchUserData() {
-            // Simulated server response
-            const userData = {
-                // name: "Jane Doe",
-                origin: "Bandung, Indonesia",
-                hobbies: ["Photography", "Traveling", "Cooking"]
-            };
-
-            // Update the DOM with the fetched data
-            // document.getElementById("user-name").textContent = userData.name + "'s Profile";
-            // document.getElementById("name").textContent = userData.name;
-            // document.getElementById("origin").textContent = userData.origin;
-
-            // Clear previous hobbies and populate with new data
-        //     const hobbiesList = document.getElementById("hobbies-list");
-        //     hobbiesList.innerHTML = ""; // Clear existing content
-        //     userData.hobbies.forEach(function(hobby) {
-        //         const li = document.createElement("li");
-        //         li.textContent = hobby;
-        //         hobbiesList.appendChild(li);
-        //     });
-        // }
-
-        // Fetch and display the user data when the page loads
-        document.addEventListener("DOMContentLoaded", fetchUserData);
-    </script> -->
+    
 </body>
 </html>
