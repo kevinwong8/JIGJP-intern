@@ -70,7 +70,7 @@
           cameraVideo,
           (result) => {
             console.log(result);
-            qrResult.textContent = `Result: ${result.data}`;
+            qrResult.textContent = `Result: ${result.data.name}`;
             return;
           },
           { returnDetailedScanResult: true }
@@ -103,31 +103,13 @@
           align-items: center;
         }
   
-        video {
-          width: 100vw;
-          height: calc(100vw * (9 / 16));
+        
+         video {
+          width: 100%;
+          height:auto;
         }
       </style>
-      <style>
-        * {
-          box-sizing: border-box;
-          margin: 0;
-        }
-  
-        html,
-        body {
-          width: 100vw;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-  
-        video {
-          width: 100vw;
-          height: calc(100vw * (9 / 16));
-          display: flex;
-        }
-      </style>
+      
 </head>
 <body>
     <div class="container">
@@ -136,7 +118,10 @@
             
             <button type="submit" class="btn btn-success" id="scan">Scan QR</button>
             <button type="submit" class="btn btn-danger" id="stop">Stop</button>
-            <video id="camera"></video>
+            <div class="embed-responsive embed-responsive-16by9">
+              <video class="embed-responsive-item" id="camera"></video>
+            </div>
+            
             <h3>Scan your code here</h3>
             <span id="result"></span>
             <a href="index.html">Generate QRCode Here!</a>
