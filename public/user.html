@@ -36,6 +36,8 @@
             document.getElementById("user-name").textContent = userData.name + "'s Profile";
             document.getElementById("name").textContent = userData.name;
             document.getElementById("origin").textContent = userData.origin;
+            const bellSound = document.getElementById("bell-sound");
+            bellSound.play();
 
             const hobbiesList = document.getElementById("hobbies-list");
             hobbiesList.innerHTML = ""; // Clear existing content
@@ -82,7 +84,7 @@
         </div>
             
         <!-- scan QR part -->
-        
+        <audio id="bell-sound" src="bell.mp3" preload="auto"></audio>
         <span id="result"></span>
         <img style="display:none" src="happy-cat.gif" alt="Happy Cat" id="meme" style="width:100px;height: 100px;">
           
