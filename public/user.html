@@ -70,7 +70,9 @@
           cameraVideo,
           (result) => {
             console.log(result);
-            qrResult.textContent = `Result: ${result.data.name}`;
+            // const resultJson = JSON.parse(result);
+            qrResult.textContent = `Result: ${result.data}`;
+            // qrResult.textContent = `Result: ` ;
             return;
           },
           { returnDetailedScanResult: true }
@@ -114,7 +116,7 @@
 <body>
     <div class="container">
        
-            <h3> QR Code Reader</h3>
+            <h1> QR Code Reader</h1>
             
             <button type="submit" class="btn btn-success" id="scan">Scan QR</button>
             <button type="submit" class="btn btn-danger" id="stop">Stop</button>
