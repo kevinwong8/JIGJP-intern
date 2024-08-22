@@ -193,13 +193,14 @@
          checkboxes.forEach(function(checkbox) {
              hobbies.push(checkbox.value);
          });
+         console.log(hobbies);
 
          // Combine the name and hobbies into a single string
         //  var inputString = name + ": " + origin + ": "+ hobbies.join(", ");
          var inputString = {
             "name" :[name], 
             "origin": [origin],
-            "hobbies" :  [hobbies.join(", ")]};
+            "hobbies" :  hobbies};
          // Generate the barcode
          var qrcodeContainer = document.getElementById("qrcode");
             qrcodeContainer.innerHTML = "";  // Clear previous QR code

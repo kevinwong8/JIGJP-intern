@@ -39,9 +39,12 @@
 
             const hobbiesList = document.getElementById("hobbies-list");
             hobbiesList.innerHTML = ""; // Clear existing content
+            
+            console.log(userData.hobbies);
             userData.hobbies.forEach(function(hobby) {
                 const li = document.createElement("li");
                 li.textContent = hobby;
+                
                 hobbiesList.appendChild(li);
             });
             
@@ -70,32 +73,32 @@
 <body>
     <div class="container mt-5">
        
-            <h1> QR Code Reader</h1>
-            <a href="index.html">Generate QRCode Here!</a><br>
-            <button type="submit" class="btn btn-success" id="scan">Scan QR</button><br>
-            <button type="submit" class="btn btn-danger" id="stop">Stop</button>
-            <div class="embed-responsive embed-responsive-16by9">
-              <video class="embed-responsive-item" id="camera"></video>
+        <h1> QR Code Reader</h1>
+        <a href="index.html">Generate QRCode Here!</a><br>
+        <button type="submit" class="btn btn-success" id="scan">Scan QR</button><br>
+        <button type="submit" class="btn btn-danger" id="stop">Stop</button>
+        <div class="embed-responsive embed-responsive-16by9">
+          <video class="embed-responsive-item" id="camera"></video>
+        </div>
+            
+        <!-- scan QR part -->
+        
+        <span id="result"></span>
+        <img style="display:none" src="happy-cat.gif" alt="Happy Cat" id="meme" style="width:100px;height: 100px;">
+          
+        <dialog>
+            <button autofocus type="submit" class="btn btn-danger">Close</button>
+            <div class="profile-container">
+                <h2 id="user-name">User Profile</h2>
+                <p><strong>Name:</strong> <span id="name">Please scan the QR code</span></p>
+                <p><strong>Origin:</strong> <span id="origin">Please scan the QR code</span></p>
+                <p><strong>Hobbies:</strong></p>
+                <ul id="hobbies-list" class="hobbies-list">
+                    <li>Please scan the QR code</li>
+                </ul>
             </div>
-            
-            <!-- scan QR part -->
-          <h3>Scan your code here</h3>
-          <span  id="result"></span>
-          <img style="display:none" src="happy-cat.gif" alt="Happy Cat" id="meme" style="width:100px;height: 100px;">
-            
-          <dialog>
-              <button autofocus type="submit" class="btn btn-danger">Close</button>
-              <div class="profile-container">
-                  <h2 id="user-name">User Profile</h2>
-                  <p><strong>Name:</strong> <span id="name">Please scan the QR code</span></p>
-                  <p><strong>Origin:</strong> <span id="origin">Please scan the QR code</span></p>
-                  <p><strong>Hobbies:</strong></p>
-                  <ul id="hobbies-list" class="hobbies-list">
-                      <li>Please scan the QR code</li>
-                  </ul>
-              </div>
-            </dialog>
-          <button type="submit" class="btn btn-primary">Show Friend's Bio</button>
+          </dialog>
+        <button type="submit" class="btn btn-primary">Show Friend's Bio</button>
         
         <script>
             const dialog = document.querySelector("dialog");
