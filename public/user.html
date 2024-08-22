@@ -70,8 +70,24 @@
           cameraVideo,
           (result) => {
             console.log(result);
-            // const resultJson = JSON.parse(result);
-            qrResult.textContent = `Result: ${result.data}`;
+            const userData = JSON.parse(result)
+            qrResult.textContent = `Scan succeed ${result.data}`;
+            
+
+            // Update the DOM with the fetched data
+            document.getElementById("user-name").textContent = userData.name + "'s Profile";
+            document.getElementById("name").textContent = userData.name;
+            document.getElementById("origin").textContent = userData.origin;
+
+            // Clear previous hobbies and populate with new data
+            const hobbiesList = document.getElementById("hobbies-list");
+            hobbiesList.innerHTML = ""; // Clear existing content
+            userData.hobbies.forEach(function(hobby) {
+                const li = document.createElement("li");
+                li.textContent = hobby;
+                hobbiesList.appendChild(li);
+              });
+          
             // qrResult.textContent = `Result: ` ;
             return;
           },
@@ -178,21 +194,8 @@
                 origin: "Bandung, Indonesia",
                 hobbies: ["Photography", "Traveling", "Cooking"]
             };
-
-            // Update the DOM with the fetched data
-            document.getElementById("user-name").textContent = userData.name + "'s Profile";
-            document.getElementById("name").textContent = userData.name;
-            document.getElementById("origin").textContent = userData.origin;
-
-            // Clear previous hobbies and populate with new data
-            const hobbiesList = document.getElementById("hobbies-list");
-            hobbiesList.innerHTML = ""; // Clear existing content
-            userData.hobbies.forEach(function(hobby) {
-                const li = document.createElement("li");
-                li.textContent = hobby;
-                hobbiesList.appendChild(li);
-            });
-        }
+          }
+            
 
         // Fetch and display the user data when the page loads
         document.addEventListener("DOMContentLoaded", fetchUserData);
