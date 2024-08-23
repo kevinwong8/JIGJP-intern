@@ -90,11 +90,34 @@ h3 {
     font-weight: bold;
     transition: background-color 0.3s ease;
     margin-bottom: 15px;
+    
+/* 
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s; */
 }
 
 .btn-primary:hover {
     background-color: hwb(211 2% 53%);
+    transform: translateY(-2px);
 }
+
+.btn-primary:active {
+    background-color: #004080;
+    transform: translateY(0);
+}
+
+.btn-primary:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
+}
+
 .btn-danger {
     width: 100%;
     margin-bottom: 10px;
@@ -109,11 +132,14 @@ h3 {
 }
 .btn-danger:hover {
     background-color: hwb(0 0% 58%);
+    transform: translateY(-2px);
 }
 
 .btn-success:hover {
     background-color: hwb(135 0% 59%);
+    transform: translateY(-2px);
 }      
+
 
 
 .profile-container {
@@ -191,4 +217,32 @@ video {
     width: 50px;
     height: auto;
     transition: transform 2s ease, top 2s ease, left 2s ease;
+}
+
+.styled-link {
+    display: inline-block;
+    padding: 4px 8px;
+    font-size: 18px;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background-color: #007BFF;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.2s;
+    margin-bottom: 10px;
+}
+
+.styled-link:hover {
+    background-color: #0056b3;
+    transform: translateY(-2px);
+}
+
+.styled-link:active {
+    background-color: #004080;
+    transform: translateY(0);
+}
+
+.styled-link:focus {
+    outline: none;
+    box-shadow: 0 0 0 4px rgba(0, 123, 255, 0.5);
 }
