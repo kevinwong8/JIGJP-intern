@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Profile</title>
@@ -15,66 +15,69 @@
     <link rel="stylesheet" href="style.css" />
    
     <script type="module" defer>
-        import QrScanner from 'https://nimiq.github.io/qr-scanner/qr-scanner.min.js';
-  
-        const button = document.getElementById('scan');
-        const stop = document.getElementById('stop');
-        const cameraVideo = document.getElementById('camera');
-        const qrResult = document.getElementById('result');
-        let meme = document.getElementById('meme');
-  
-        const qrScanner = new QrScanner(
-          cameraVideo,
-          (result) => {
-            console.log(result);
-            
-            // qrResult.textContent = `Scan successful ${result.data}`;
-            qrResult.textContent = `Scan successful`;
-            meme.style.display = 'block';
-    
-            const userData = JSON.parse(result.data)
-            document.getElementById("user-name").textContent = userData.name + "'s Profile";
-            document.getElementById("name").textContent = userData.name;
-            document.getElementById("origin").textContent = userData.origin;
-            const bellSound = document.getElementById("bell-sound");
-            bellSound.play();
+      import QrScanner from 'https://nimiq.github.io/qr-scanner/qr-scanner.min.js';
 
-            const hobbiesList = document.getElementById("hobbies-list");
-            hobbiesList.innerHTML = ""; // Clear existing content
-            
-            console.log(userData.hobbies);
-            userData.hobbies.forEach(function(hobby) {
-                const li = document.createElement("li");
-                li.textContent = hobby;
-                
-                hobbiesList.appendChild(li);
-            });
-            
-            return;
-          },
-          { returnDetailedScanResult: true }
-        );
-  
-        button.addEventListener('click', (event) => {
-          event.stopPropagation();
-          event.preventDefault();
-  
-          qrScanner.start();
-        });
+      const button = document.getElementById('scan');
+      const stop = document.getElementById('stop');
+      const cameraVideo = document.getElementById('camera');
+      const qrResult = document.getElementById('result');
+      let meme = document.getElementById('meme');
 
-        stop.addEventListener('click', (event) => {
-          qrResult.textContent = '';
-          meme.style.display = 'none';
-    
-          qrScanner.stop();
-        });
-      </script>
+      const qrScanner = new QrScanner(
+        cameraVideo,
+        (result) => {
+          console.log(result);
+          
+          // change the dialog
+          qrResult.textContent = `Scan successful`;
+          meme.style.display = 'block';
+  
+          const userData = JSON.parse(result.data);
+  
+          document.getElementById("user-name").textContent = userData.name + "'s Profile";
+          document.getElementById("name").textContent = userData.name;
+          document.getElementById("origin").textContent = userData.origin;
+          document.getElementById("funFact").textContent = userData.funFact;
+          const bellSound = document.getElementById("bell-sound");
+          bellSound.play();
+
+          const hobbiesList = document.getElementById("hobbies-list");
+          hobbiesList.innerHTML = ""; // Clear existing content
+          
+          console.log(userData.hobbies);
+          userData.hobbies.forEach(function(hobby) {
+              const li = document.createElement("li");
+              li.textContent = hobby;
+              
+              hobbiesList.appendChild(li);
+          });
+          
+          return;
+        },
+        { returnDetailedScanResult: true }
+      );
+  
+      button.addEventListener('click', (event) => {
+        event.stopPropagation();
+        event.preventDefault();
+
+        qrScanner.start();
+      });
+
+      stop.addEventListener('click', (event) => {
+        qrResult.textContent = '';
+        meme.style.display = 'none';
+  
+        qrScanner.stop();
+      });
+    </script>
       
       
-</head>
+  </head>
 <body>
     <div class="container mt-5">
-       
+      
+       <!-- QR Scanner -->
         <h1> QR Code Reader</h1>
         <a href="index.html" class="styled-link">Generate QRCode Here!</a><br>
         <button type="submit" class="btn btn-success" id="scan">Scan QR</button><br>
@@ -87,13 +90,15 @@
         <audio id="bell-sound" src="happy-happy-happy-song.mp3" preload="auto"></audio>
         <span id="result"></span>
         <img style="display:none" src="happy-cat.gif" alt="Happy Cat" id="meme" style="width:100px;height: 100px;">
-          
+        
+        <!-- pop up dialog -->
         <dialog>
             <button autofocus type="submit" class="btn btn-danger">Close</button>
             <div class="profile-container">
                 <h2 id="user-name">User Profile</h2>
                 <p><strong>Name:</strong> <span id="name">Please scan the QR code</span></p>
                 <p><strong>City:</strong> <span id="origin">Please scan the QR code</span></p>
+                <p><strong>Fun Fact:</strong> <span id="funFact">Please scan the QR code</span></p>
                 <p><strong>Hobbies:</strong></p>
                 <ul id="hobbies-list" class="hobbies-list">
                     <li>Please scan the QR code</li>
@@ -102,6 +107,7 @@
           </dialog>
         <button type="submit" class="btn btn-primary">Show Friend's Bio</button>
         
+        <!-- script for the dialog -->
         <script>
             const dialog = document.querySelector("dialog");
             const showButton = document.querySelector("dialog + button");
@@ -109,16 +115,15 @@
 
             // "Show the dialog" button opens the dialog modally
             showButton.addEventListener("click", () => {
-            dialog.showModal();
+              dialog.showModal();
             });
 
             // "Close" button closes the dialog
             closeButton.addEventListener("click", () => {
-            dialog.close();
+              dialog.close();
             });
 
         </script>
-    
     </div>   
   </body>
 </html>

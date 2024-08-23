@@ -1,89 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
-<head> 
+  <head> 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
 
     
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha384-KyZXEAg3QhqLMpG8r+J4jsl5c9zdLKaUk5Ae5f5b1bw6AUn5f5v8FZJoMxm6f5cH1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js" integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+" crossorigin="anonymous"></script>
     <title>Main Page</title>
     <link rel="stylesheet" href="style.css" />
-    <script type="module" defer>
-        import QrScanner from 'https://nimiq.github.io/qr-scanner/qr-scanner.min.js';
-  
-        const button = document.getElementById('scan');
-        const stop = document.getElementById('stop');
-        const cameraVideo = document.getElementById('camera');
-        const qrResult = document.getElementById('result');
-  
-        const qrScanner = new QrScanner(
-          cameraVideo,
-          (result) => {
-            console.log(result);
-            qrResult.textContent = `Result: ${result.data}`;
-            return;
-          },
-          { returnDetailedScanResult: true }
-        );
-  
-        button.addEventListener('click', (event) => {
-          event.stopPropagation();
-          event.preventDefault();
-  
-          qrScanner.start();
-        });
 
-        stop.addEventListener('click', (event) => {
-        
-  
-          qrScanner.stop();
-        });
-      </script>
-      <style>
-        * {
-          box-sizing: border-box;
-          margin: 0;
-        }
-  
-        html
-        body {
-          width: 100vw;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-  
-        video {
-          width: 100vw;
-          height: calc(100vw * (9 / 16));
-        }
-      </style>
-      <style>
-        * {
-          box-sizing: border-box;
-          margin: 0;
-        }
-  
-        html,
-        body {
-          width: 100vw;
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-        }
-  
-        video {
-          width: 100vw;
-          height: calc(100vw * (9 / 16));
-          display: flex;
-        }
-      </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container mt-5" id="sky">
     
         <img src="flying-cat.png" alt="Flying Cat" class="cat" id="flyingCat">
@@ -102,6 +33,11 @@
               <label for="originInput">City</label>
               <input type="origin" class="form-control" id="originInput" placeholder="Enter your city" required>
             </div>
+
+            <div class="form-group">
+              <label for="funFactInput">Fun Fact</label>
+              <input type="funFact" class="form-control" id="funFactInput" placeholder="Enter your fun fact" >
+            </div>
     
             <div class="form-group">
                 <label for="hobbies">Choose your hobbies: </label>
@@ -112,9 +48,9 @@
                     </label>
                 </div>
                 <div class="form-check">
-                    <input class="form-check-input" type="checkbox" value="Traveling" id="traveling">
-                    <label class="form-check-label" for="traveling">
-                        Traveling
+                    <input class="form-check-input" type="checkbox" value="Travelling" id="travelling">
+                    <label class="form-check-label" for="travelling">
+                        Travelling
                     </label>
                 </div>
                 <div class="form-check">
@@ -175,61 +111,57 @@
             <div id="qrcode"></div>
             <audio id="bell-sound" src="bell.mp3" preload="auto"></audio>
         </div>
-    
-        
-    
       </div>
-   
     </div>
-    
 
     <script src="https://cdn.jsdelivr.net/npm/qrcodejs/qrcode.min.js"></script>
-
- <script>
+    <script>
    
-   function getRandomPosition() {
-    const screenWidth = window.innerWidth;
-    const screenHeight = window.innerHeight
+      function getRandomPosition() {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight
 
-    const randomX = Math.floor(Math.random() * (screenWidth - 100)); // Subtract cat's width to keep it in view
-    const randomY = Math.floor(Math.random() * (screenHeight - 100)); // Subtract cat's height to keep it in view
+        const randomX = Math.floor(Math.random() * (screenWidth - 100)); // Subtract cat's width to keep it in view
+        const randomY = Math.floor(Math.random() * (screenHeight - 100)); // Subtract cat's height to keep it in view
 
-    return { x: randomX, y: randomY };
-    }
+        return { x: randomX, y: randomY };
+      }
 
-    function moveCatRandomly() {
-      const cat = document.getElementById('flyingCat');
+      function moveCatRandomly() {
+        const cat = document.getElementById('flyingCat');
         const newPosition = getRandomPosition();
 
         cat.style.left = `${newPosition.x}px`;
         cat.style.top = `${newPosition.y}px`;
-    }
+      }
 
-    document.addEventListener("DOMContentLoaded", function() {
-        setInterval(moveCatRandomly, 1000); // Move the cat every 2 seconds
-    });
-    document.getElementById("barcodeForm").addEventListener("submit", function(event) {
-         event.preventDefault();
+      document.addEventListener("DOMContentLoaded", function() {
+          setInterval(moveCatRandomly, 1000); // Move the cat every 2 seconds
+      });
 
-         // Get the name input
-         var name = document.getElementById("nameInput").value;
-         var origin = document.getElementById("originInput").value;
-         // Get the selecte d hobbies
-         var hobbies = [];
-         var checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
-         checkboxes.forEach(function(checkbox) {
-             hobbies.push(checkbox.value);
-         });
-         console.log(hobbies);
+      document.getElementById("barcodeForm").addEventListener("submit", function(event) {
+          event.preventDefault();
 
-         // Combine the name and hobbies into a single string
-        //  var inputString = name + ": " + origin + ": "+ hobbies.join(", ");
-         var inputString = {
+          // Get the name input
+          var name = document.getElementById("nameInput").value;
+          var origin = document.getElementById("originInput").value;
+          var funFact = document.getElementById("funFactInput").value;
+          // Get the selecte d hobbies
+          var hobbies = [];
+          var checkboxes = document.querySelectorAll("input[type=checkbox]:checked");
+          checkboxes.forEach(function(checkbox) {
+              hobbies.push(checkbox.value);
+          });
+          console.log(hobbies);
+
+          var inputString = {
             "name" :[name], 
             "origin": [origin],
+            "funFact" : [funFact],
             "hobbies" :  hobbies};
-         // Generate the barcode
-         var qrcodeContainer = document.getElementById("qrcode");
+
+          // Generate the barcode
+          var qrcodeContainer = document.getElementById("qrcode");
             qrcodeContainer.innerHTML = "";  // Clear previous QR code
             var qrcode = new QRCode(qrcodeContainer, {
                 text: JSON.stringify(inputString),
@@ -242,12 +174,10 @@
             });
           const bellSound = document.getElementById("bell-sound");
           bellSound.play();
-     });
-     
- </script>
-
-
-</body>
+        });
+        
+    </script>
+  </body>
 </html>
 
 
